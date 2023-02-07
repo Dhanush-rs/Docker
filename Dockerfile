@@ -18,8 +18,7 @@ RUN npm run build --prod
 
 ### STAGE 2:RUN ###
 # Defining nginx image to be used
-FROM nginx:latest
-RUN apt-get update && apt-get install curl libtiff5=4.0.9-5ubuntu0.3
+FROM nginx:1.14.2-alpine AS ngi
 # Copying compiled code and nginx config to different folder
 # NOTE: This path may change according to your project's output folder 
 COPY --from=build /dist/src/app/dist/realm12 /usr/share/nginx/html
